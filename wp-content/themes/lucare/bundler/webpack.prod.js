@@ -39,33 +39,16 @@ module.exports = {
       // SASS
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCSSExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: env.sourcemaps ? true : false,
-            },
-          },
-          {
-            loader: 'postcss-loader', // Add postcss-loader
-            options: {
-              postcssOptions: {
-                plugins: [
-                  'tailwindcss',
-                  'autoprefixer',
-                ],
+        use:
+            [
+              MiniCSSExtractPlugin.loader,
+              {
+                loader: "css-loader",
               },
-              sourceMap: env.sourcemaps ? true : false,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: env.sourcemaps ? true : false,
-            },
-          },
-        ]
+              {
+                loader: 'sass-loader',
+              },
+            ]
       },
       // FONTS
       {

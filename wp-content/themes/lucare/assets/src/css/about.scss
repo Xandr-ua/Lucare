@@ -1,0 +1,32 @@
+.about {
+  margin-bottom: 60px;
+
+  &__content-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__content {
+    max-width: 812px;
+    width: 100%;
+  }
+
+  &__text {
+    font-size: 56px;
+    font-weight: 500;
+    color: #18171A;
+    text-transform: uppercase;
+    line-height: 64px;
+    letter-spacing: -2.36px;
+    margin-bottom: 15px;
+  }
+
+  &__author {
+    font-size: 16px;
+    color: #02b01c;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}

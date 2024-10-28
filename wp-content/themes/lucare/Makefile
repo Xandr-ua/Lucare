@@ -1,4 +1,4 @@
-THEME_NAME = lucare
+THEME_NAME = wp-theme-boilerplate
 OUTPUT_ZIP = $(THEME_NAME).zip
 
 # Rule to create the zip
