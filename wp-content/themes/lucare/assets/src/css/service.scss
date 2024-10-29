@@ -1,0 +1,14 @@
+.service {
+  padding: 130px 0;
+
+  &__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 60px;
+  }
+
+  &__btn {
+    display: inline-block;
+  }
+}

@@ -31,31 +31,72 @@ get_header();
     </div>
 
     <section class="washing-services">
-        <div class="container">
-            <div class="washing-services__wrap">
-                <div class="washing-services__content">
+        <div class="washing-services__wrap">
+            <div class="washing-services__content">
+
+                <?php
+                $about_us_title = get_field('about_us_title');
+                $about_us_items = get_field('about_us_items');
+                $about_us_image = get_field('about_us_image');
+                ?>
+
+
+
+                <?php if ($about_us_title) : ?>
                     <h2 class="washing-services__title">
-                        Professional washing Services
+                        <?php echo esc_html($about_us_title); ?>
                     </h2>
+                <?php endif; ?>
 
-                    <ul class="washing-services__list">
-                        <li class="washing-services__item">
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking
-                        </li>
+                <ul class="washing-services__list">
+                    <?php foreach ($about_us_items as $item) :
+                        $about_us_text = $item['about_us_text'];
+                        if ($about_us_text) : ?>
+                            <li class="washing-services__item">
+                                <?php echo esc_html($about_us_text) ; ?>
+                            </li>
+                        <?php endif; endforeach; ?>
+                </ul>
+            </div>
 
-                        <li class="washing-services__item">
-                            Entrust your vehicle to our team of skilled professionals who take pride in delivering unparalleled cleaning excellence
-                        </li>
+            <div class="washing-services__image">
+                <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                if ($about_us_image) {
+                    echo wp_get_attachment_image($about_us_image, $size, '', [
+                        'loading' => 'lazy'
+                    ]);
+                } ?>
+            </div>
+        </div>
+    </section>
 
-                        <li class="washing-services__item">
-                            Our meticulous approach ensures that every nook and cranny of your car receivesed the attention it deserves.
-                        </li>
-                    </ul>
-                </div>
+    <section class="service">
+        <div class="container">
+            <p class="name-category">
+                <?php echo esc_html_e('Our Service', 'lucare') ; ?>
+            </p>
+            <div class="service__box">
+                <h2 class="service__title main-title">
+                    Offering Quality Services
+                </h2>
 
-                <div class="washing-services__image">
+                <a class="main-button service__btn" href="#">
+                    View More
+                </a>
+            </div>
 
-                </div>
+            <div class="service__wrap">
+                <ul class="service__images">
+                    <li class="service__images-item">
+
+                    </li>
+                </ul>
+
+                <ul class="service__content">
+                    <li class="service__content-item">
+
+                    </li>
+                </ul>
             </div>
         </div>
     </section>
