@@ -61,11 +61,12 @@ get_header();
 
             <div class="washing-services__image">
                 <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
-                if ($about_us_image) {
-                    echo wp_get_attachment_image($about_us_image, $size, '', [
-                        'loading' => 'lazy'
-                    ]);
-                } ?>
+                    if ($about_us_image) {
+                        echo wp_get_attachment_image($about_us_image, $size, '', [
+                            'loading' => 'lazy'
+                        ]);
+                    }
+                ?>
             </div>
         </div>
     </section>
@@ -86,16 +87,44 @@ get_header();
             </div>
 
             <div class="service__wrap">
-                <ul class="service__images">
-                    <li class="service__images-item">
+                <?php
+                    $our_service_items = get_field('our_service_items');
+                ?>
 
-                    </li>
-                </ul>
+                <div class="service__images-inner">
+                    <ul class="service__images">
+                        <?php
+                        foreach ($our_service_items as $image) :
+                            $our_service_image = $image['our_service_image'];
+                            if ($our_service_image) : ?>
+                                <li class="service__images-item service__images-hidden">
+                                    <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                                    if ($our_service_image) {
+                                        echo wp_get_attachment_image($our_service_image, $size, '', [
+                                            'loading' => 'lazy'
+                                        ]);
+                                    }
+                                    ?>
+                                </li>
+                            <?php endif; endforeach; ?>
+                    </ul>
+                </div>
 
                 <ul class="service__content">
-                    <li class="service__content-item">
-
-                    </li>
+                    <?php
+                        $count = 1;
+                        foreach ($our_service_items as $text) :
+                            $our_service_text = $text['our_service_text'];
+                            if ($our_service_text) :
+                    ?>
+                                <li class="service__content-item">
+                                  <span>0<?php echo $count; ?></span>  <?php echo esc_html($our_service_text); ?>
+                                </li>
+                    <?php
+                                $count++;
+                        endif;
+                        endforeach;
+                    ?>
                 </ul>
             </div>
         </div>

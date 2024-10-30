@@ -11,4 +11,48 @@
   &__btn {
     display: inline-block;
   }
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 52px;
+  }
+
+  &__images {
+    display: flex;
+    width: 800px;
+    height: 590px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__images-item {
+    width: 100%;
+  }
+
+  &__images-hidden:not(:first-child) {
+    visibility: hidden;
+    position: absolute;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 30px;
+  }
+
+  &__content-item {
+    font-size: 40px;
+    color: #18171A;
+    line-height: 48px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    & span {
+      margin-right: 15px;
+    }
+  }
 }
