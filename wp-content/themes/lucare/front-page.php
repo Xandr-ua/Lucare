@@ -9,6 +9,96 @@ get_header();
 
 <main class="main">
 
+    <div class="hero">
+        <div class="swiper hero__slider">
+            <!-- Additional required wrapper -->
+            <?php
+                $hero_image_one = get_field('hero_image_one');
+                $hero_image_two = get_field('hero_image_two');
+                $hero_image_three = get_field('hero_image_three');
+
+                $hero_title_one = get_field('hero_title_one');
+                $hero_title_two = get_field('hero_title_two');
+                $hero_title_three = get_field('hero_title_three');
+            ?>
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <?php if ($hero_image_one) : ?>
+                        <div class="swiper-slide">
+                            <div class="hero__box">
+                                <div class="hero__bg">
+                                    <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                                    echo wp_get_attachment_image($hero_image_one, $size, '', [
+                                        'loading' => 'lazy'
+                                    ]);
+                                    ?>
+                                </div>
+                                <div class="hero__title-inner">
+                                    <p class="hero__text">
+                                        welcome to best car wash
+                                    </p>
+                                    <?php if ($hero_title_one) : ?>
+                                        <h1 class="hero__title">
+                                            <?php echo esc_html($hero_title_one) ; ?>
+                                        </h1>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($hero_image_two) : ?>
+                        <div class="swiper-slide">
+                            <div class="hero__box">
+                                <div class="hero__bg">
+                                    <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                                    echo wp_get_attachment_image($hero_image_two, $size, '', [
+                                        'loading' => 'lazy'
+                                    ]);
+                                    ?>
+                                </div>
+                                <div class="hero__title-inner">
+                                    <p class="hero__text">
+                                        welcome to best car wash
+                                    </p>
+                                    <?php if ($hero_title_two) : ?>
+                                        <p class="hero__title">
+                                            <?php echo esc_html($hero_title_two) ; ?>
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($hero_image_three) : ?>
+                        <div class="swiper-slide">
+                            <div class="hero__box">
+                                <div class="hero__bg">
+                                    <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                                    echo wp_get_attachment_image($hero_image_three, $size, '', [
+                                        'loading' => 'lazy'
+                                    ]);
+                                    ?>
+                                </div>
+                                <div class="hero__title-inner">
+                                    <p class="hero__text">
+                                        welcome to best car wash
+                                    </p>
+                                    <?php if ($hero_title_three) : ?>
+                                        <p class="hero__title">
+                                            <?php echo esc_html($hero_title_three) ; ?>
+                                        </p>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php ?>
+        </div>
+    </div>
+
     <div class="about">
         <div class="container">
             <p class="name-category">
@@ -190,6 +280,187 @@ get_header();
                     </li>
                 <?php endif; endforeach; ?>
             </ul>
+        </div>
+    </section>
+
+    <section class="carwash">
+        <div class="container">
+            <p class="name-category">
+                <?php echo esc_html_e('Before After', 'lucare') ; ?>
+            </p>
+
+            <?php $before_after_title = get_field('before_after_title');
+            if ($before_after_title) :
+                ?>
+                <h2 class="carwash__title main-title">
+                    <?php echo esc_html($before_after_title); ?>
+                </h2>
+            <?php endif; ?>
+
+            <div class="carwash__container" id="before-after-slider">
+                <?php
+                    $before_image = get_field('before_image');
+                    $after_image = get_field('after_image');
+                ?>
+
+                <?php if ($before_image) : ?>
+                    <div class="carwash__before-image" id="before-image">
+                        <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                        echo wp_get_attachment_image($before_image, $size, '', [
+                            'loading' => 'lazy'
+                        ]);
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($after_image) : ?>
+                    <div class="carwash__after-image" id="after-image">
+                        <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                        echo wp_get_attachment_image($after_image, $size, '', [
+                            'loading' => 'lazy'
+                        ]);
+                        ?>
+                    </div>
+                <?php endif; ?>
+
+                <div class="carwash__slider" id="resizer">
+                    <div class="carwash__slider-button"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <div class="reviews">
+        <?php
+        $reviews_image = get_field('reviews_image');
+        if ($reviews_image) : ?>
+            <div class="reviews__bg">
+                <?php $size = 'full'; // (thumbnail, medium, large, full or custom size)
+                echo wp_get_attachment_image($reviews_image, $size, '', [
+                    'loading' => 'lazy'
+                ]);
+                ?>
+            </div>
+        <?php endif; ?>
+        <div class="container">
+            <div class="reviews__wrap">
+                <?php
+                $args = array(
+                    'post_type' => 'reviews',
+                    'posts_per_page' => -1,
+                );
+
+                $reviews_query = new WP_Query($args);
+                if ($reviews_query->have_posts()) :
+                    ?>
+
+                <div class="reviews__slider-inner">
+                    <div class="swiper reviews__slider">
+                        <div class="swiper-wrapper">
+                            <?php
+                            while ($reviews_query->have_posts()) : $reviews_query->the_post();
+                                $reviews_author = get_field('reviews_author');
+                                $reviews_author_position = get_field('reviews_author_position');
+                                ?>
+                                <div class="swiper-slide">
+                                    <div class="reviews__slide-box">
+                                        <p class="reviews__post-title">
+                                            <?php the_title(); ?>
+                                        </p>
+                                        <div class="reviews__content">
+                                            <?php the_content(); ?>
+                                        </div>
+
+                                        <div class="reviews__inner">
+                                            <div class="reviews__box">
+                                                <?php if (has_post_thumbnail()) : ?>
+                                                    <div class="reviews__img">
+                                                        <?php the_post_thumbnail(); ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                                <div class="reviews__name-inner">
+                                                    <?php if ($reviews_author) : ?>
+                                                        <p class="reviews__name">
+                                                            <?php echo esc_html($reviews_author); ?>
+                                                        </p>
+                                                    <?php endif; ?>
+                                                    <?php if ($reviews_author_position) : ?>
+                                                        <p class="reviews__post">
+                                                            <?php echo esc_html($reviews_author_position); ?>
+                                                        </p>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+
+                                            <p class="reviews__quote">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="11" viewBox="0 0 14 11" fill="none">
+                                                    <path d="M9 10.031L10.969 6H7.969V0H13.969V6L12 10.031H9ZM0.984 10.031L3 6H0V0H6V6L3.984 10.031H0.984Z" fill="#02b01c"/>
+                                                </svg>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endwhile; ?>
+                        </div>
+
+
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+                    <?php
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact">
+        <div class="container">
+            <p class="name-category">
+                <?php echo esc_html_e('Contact Us', 'lucare') ; ?>
+            </p>
+
+            <?php
+            $contact_title = get_field('contact_us_title');
+            $contact_subtitle = get_field('contact_us_subtitle');
+            $contact_text = get_field('contact_us_text');
+            $contact_phone = get_field('contact_us_num');
+            if ($contact_title) :
+                ?>
+                <h2 class="contact__title main-title">
+                    <?php echo esc_html($contact_title); ?>
+                </h2>
+            <?php endif; ?>
+
+            <div class="contact__wrap">
+                <div class="contact__content">
+                    <?php if ($contact_subtitle) : ?>
+                        <p class="contact__subtitle">
+                            <?php echo esc_html($contact_subtitle); ?>
+                        </p>
+                    <?php endif; ?>
+                    <?php if ($contact_text) : ?>
+                        <div class="contact__text">
+                            <?php echo $contact_text; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($contact_phone) :
+                        $clean_phone = preg_replace('/[^\d+]/', '', $contact_phone);
+                        ?>
+                        <a class="contact__phone" href="tel:<?php echo esc_url($clean_phone); ?>">
+                            <?php echo esc_html($contact_phone); ?>
+                        </a>
+                    <?php endif; ?>
+                </div>
+
+                <div class="contact__form">
+                    <?php echo do_shortcode('[contact-form-7 id="e594716" title="Contact form 1"]'); ?>
+                </div>
+            </div>
         </div>
     </section>
 </main>

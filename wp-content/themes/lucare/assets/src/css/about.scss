@@ -29,4 +29,19 @@
     text-transform: uppercase;
     font-weight: 500;
   }
+
+  @media screen and (max-width: 1200px) {
+    &__text {
+      font-size: 48px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-bottom: 30px;
+
+    &__text {
+      font-size: 36px;
+      line-height: 42px;
+    }
+  }
 }

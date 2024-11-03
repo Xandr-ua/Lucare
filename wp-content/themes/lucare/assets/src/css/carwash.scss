@@ -1,0 +1,103 @@
+.carwash {
+  padding: 130px 0;
+
+  &__title {
+    margin-bottom: 60px;
+  }
+
+  &__container {
+    width:100%;
+    position:relative;
+    overflow:hidden;
+    border:3px solid white;
+  }
+
+  &__before-image {
+    position:absolute;
+    height:100%;
+    width:50%;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:2;
+    user-select: none;
+  }
+
+   &__after-image {
+     display:block;
+     user-select: none;
+  }
+
+  &__after-image img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__before-image img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__slider {
+    position:absolute;
+    display:flex;
+    align-items:center;
+    z-index:5;
+    top:0;
+    left:50%;
+    height:100%;
+    width:4px;
+    background:white;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+  }
+
+  &__slider-button {
+    background-color: #02b01c;
+    position:absolute;
+    margin: 0 0 0 -18px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:3px solid white;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="11" viewBox="0 0 22 11" fill="none"><path d="M6.17188 1.28883L2.34354 5.5L6.17188 9.71117L5.00021 11L0.000207925 5.5L5.00021 -2.38419e-07L6.17188 1.28883Z" fill="white"/><path d="M15.0002 1.28883L16.1719 -2.38419e-07L21.1719 5.5L16.1719 11L15.0002 9.71117L18.8285 5.5L15.0002 1.28883Z" fill="white"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 24px;
+      height: 12px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 60px 0;
+
+    &__title {
+      margin-bottom: 30px;
+    }
+
+    &__slider {
+      width:2px;
+    }
+
+    &__slider-button {
+      margin: 0 0 0 -14px;
+      width:30px;
+      height:30px;
+      border:2px solid white;
+
+      &::before {
+        width: 20px;
+        height: 10px;
+      }
+    }
+  }
+}
+
