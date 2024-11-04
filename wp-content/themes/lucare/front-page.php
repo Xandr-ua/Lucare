@@ -418,7 +418,7 @@ get_header();
         </div>
     </div>
 
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="container">
             <p class="name-category">
                 <?php echo esc_html_e('Contact Us', 'lucare') ; ?>
