@@ -101,20 +101,30 @@ get_header();
 
     <div class="about">
         <div class="container">
-            <p class="name-category">
-                <?php echo esc_html_e('About Us', 'lucare') ; ?>
-            </p>
+            <?php
+            $about_us_category = get_field('about_us_category');
+            if ($about_us_category) : ?>
+                <p class="name-category">
+                    <?php echo esc_html($about_us_category) ; ?>
+                </p>
+            <?php endif; ?>
 
             <div class="about__content-inner">
                 <div class="about__content">
-                    <p class="about__text">
-                        Learn The Exact Steps To Set up,
-                        GROW AND SCALE A HIGHLY SUCCESSFUL
-                        BUSINESS IDEAS
-                    </p>
-                    <p class="about__author">
-                        Thomas Stinson, CEO
-                    </p>
+                    <?php
+                    $about_us_text = get_field('about_us_text');
+                    if ($about_us_text) : ?>
+                        <div class="about__text">
+                            <?php echo $about_us_text; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php
+                    $about_us_author = get_field('about_us_author');
+                    if ($about_us_author) : ?>
+                        <p class="about__author">
+                            <?php echo $about_us_author; ?>
+                        </p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -163,9 +173,13 @@ get_header();
 
     <section class="service">
         <div class="container">
-            <p class="name-category">
-                <?php echo esc_html_e('Our Service', 'lucare') ; ?>
-            </p>
+            <?php
+            $our_service_category = get_field('our_service_category');
+            if ($our_service_category) : ?>
+                <p class="name-category">
+                    <?php echo esc_html($our_service_category) ; ?>
+                </p>
+            <?php endif; ?>
             <div class="service__box">
                 <?php $our_service_title = get_field('our_service_title');
                     if ($our_service_title) :
@@ -245,9 +259,13 @@ get_header();
 
     <section class="process">
         <div class="container">
-            <p class="name-category process__category">
-                <?php echo esc_html_e('Our Process', 'lucare') ; ?>
-            </p>
+            <?php
+            $our_process_category = get_field('our_process_category');
+            if ($our_process_category) : ?>
+                <p class="name-category process__category">
+                    <?php echo esc_html($our_process_category) ; ?>
+                </p>
+            <?php endif; ?>
 
             <?php
             $our_process_title = get_field('our_process_title');
@@ -285,9 +303,13 @@ get_header();
 
     <section class="carwash">
         <div class="container">
-            <p class="name-category">
-                <?php echo esc_html_e('Before After', 'lucare') ; ?>
-            </p>
+            <?php
+            $before_after_category = get_field('before_after_category');
+            if ($before_after_category) : ?>
+                <p class="name-category">
+                    <?php echo esc_html($before_after_category) ; ?>
+                </p>
+            <?php endif; ?>
 
             <?php $before_after_title = get_field('before_after_title');
             if ($before_after_title) :
@@ -420,9 +442,13 @@ get_header();
 
     <section class="contact" id="contact">
         <div class="container">
-            <p class="name-category">
-                <?php echo esc_html_e('Contact Us', 'lucare') ; ?>
-            </p>
+            <?php
+            $contact_us_category = get_field('contact_us_category');
+            if ($contact_us_category) : ?>
+                <p class="name-category">
+                    <?php echo esc_html($contact_us_category) ; ?>
+                </p>
+            <?php endif; ?>
 
             <?php
             $contact_title = get_field('contact_us_title');

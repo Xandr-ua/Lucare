@@ -28,9 +28,19 @@
                 </a>
             <?php endif; ?>
 
-            <a class="header__btn main-button" type="button" href="#contact">
-                <?php echo esc_html_e('CONTACT US', 'lucare') ; ?>
-            </a>
+            <nav class="header__nav">
+
+                <?php
+                wp_nav_menu([
+                    'theme_location' => 'header_menu',
+                    'menu_class' => 'header__nav-list',
+                    'container' => 'false',
+                ]);
+                ?>
+                <a class="header__btn main-button" type="button" href="#contact">
+                    <?php echo esc_html_e('CONTACT US', 'lucare') ; ?>
+                </a>
+            </nav>
         </div>
     </div>
 </header>
